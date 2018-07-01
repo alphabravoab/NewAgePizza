@@ -45,6 +45,7 @@ const pizzabase = {
          <div>
            <form onSubmit={ this.addIt }>
                <select onChange = { this.handleChange }>
+                 <option value ="">--Pick a base -- </option>
                  {Object.keys(pizzabase).map((base)=> <option value ={ base }> { base } </option> )}
                </select>
                <input type="submit" value="choose" />

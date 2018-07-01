@@ -48,6 +48,7 @@ const pizzasauce = {
 
            <form onSubmit={ this.addIt }>
                <select onChange = { this.handleChange }>
+                  <option value ="">--Pick a sauce -- </option>
                   { Object.keys(pizzasauce).map((sauce)=> <option value ={ sauce }> { sauce }</option> ) }
                </select>
                <input type="submit" value="choose" />

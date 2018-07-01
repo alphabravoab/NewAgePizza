@@ -24,6 +24,7 @@ import { switchSelection } from '../actions/currentPizzaIngredient'
          <div>
            <form onSubmit={ this.addIt }>
                <select onChange = { this.handleChange }>
+                 <option value ="">--Pick ingredients -- </option>
                    <option value = "Pineapple">Pineapple</option>
                    <option value = "Corn"> Corn </option>
                    <option value = "Olives(green)"> Olives(green)</option>

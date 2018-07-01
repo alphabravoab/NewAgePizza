@@ -4,19 +4,19 @@ import { bindActionCreators } from 'redux';
 import { switchSelection } from '../actions/currentPizzaBase'
 
 const pizzabase = {
-  "normal": {
+  "25cm NY Style": {
    size :"25cm NY Style",
    price:11.49
   },
-  "large":{
+  "30cm NY Style":{
     size:'30cm NY Style',
     price:11.49
   },
-  "extralarge":{
+  "35cm NY Style":{
     size: '35cm NY Style',
     price: 13.49
   },
-  "small":{
+  "20cm NY Style":{
     size:  '20cm NY Style',
     price: 6.45
   }
@@ -24,7 +24,6 @@ const pizzabase = {
 
   class PizzaBase extends PureComponent {
   addIt = ( event ) => {
-    console.log(this.state)
     event.preventDefault()
     const base = this.state.base
     this.props.switchSelection(base)
@@ -34,8 +33,7 @@ const pizzabase = {
     handleChange = ( event ) => {
     const base = event.target.value;
     const currentPizzabase = pizzabase[base];
-  console.log(pizzabase[base])
-      this.setState({
+    this.setState({
          base: {
            size : currentPizzabase.size,
            price: currentPizzabase.price
@@ -47,10 +45,7 @@ const pizzabase = {
          <div>
            <form onSubmit={ this.addIt }>
                <select onChange = { this.handleChange }>
-                   <option value = "normal"> 25cm NY Style </option>
-                   <option value = "large"> 30cm NY Style</option>
-                   <option value = "extralarge"> 35cm NY Style </option>
-                   <option value = "small"> 25cm NY Style </option>
+                 {Object.keys(pizzabase).map((base)=> <option value ={ base }> { base } </option> )}
                </select>
                <input type="submit" value="choose" />
             </form>

@@ -34,7 +34,7 @@ import IngredientMap from './IngredientMap'
     </tr>
     <tr>
       <td> {this.props.ig1.length>3 && <div> maximum of 3 ingredients per pizza!!</div>}
-        {this.props.ig1.length<3 &&
+        { this.props.ig1.length<3 &&
             <div> {this.props.base.price &&
               <div> order now normal:   { this.props.base.price && this.props.sauce.price + this.props.base.price  + this.props.ig1.length * 0.5 } <br />
                  order per copter:   { Math.round(100 * 1.1 *( this.props.base.price && this.props.sauce.price + this.props.base.price  + this.props.ig1.length * 0.5))/100 } </div>}</div>}

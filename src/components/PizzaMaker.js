@@ -11,7 +11,7 @@ import './PizzaMaker.css'
     render() {
       return(
          <div className='Pizza'>
-            <PizzaBase />
+           <PizzaBase />
             <PizzaSauce />
             <PizzaIngredient />
             <CurrentPizza />
@@ -19,13 +19,5 @@ import './PizzaMaker.css'
          )
        }
   }
-
-  const mapStateToProps = state => ({
-    //  base: state.base
-  })
-
-  const mapDispatchToProps = dispatch => ({
-  //  switchSelection: item => dispatch(switchSelection(item))
-  })
-
-  export default connect( mapStateToProps, mapDispatchToProps, ) (PizzaMaker)
+  
+  export default connect( null ) (PizzaMaker)

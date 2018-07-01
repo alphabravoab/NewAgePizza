@@ -4,19 +4,19 @@ import { bindActionCreators } from 'redux';
 import { switchSelection } from '../actions/currentPizzaSauce'
 
 const pizzasauce = {
-  "Wsauce": {
+  "White sauce": {
    type :"White sauce",
    price:0
   },
-  "Rsauce":{
+  "Red sauce":{
     type:'Red sauce',
     price:0
   },
-  "DRsauce":{
+  "Double red sauce":{
     type: 'Double red sauce',
     price: 1
   },
-  "MixItUP":{
+  "Mix it up":{
     type:  'Mix it up',
     price: 1.5
   }
@@ -45,12 +45,10 @@ const pizzasauce = {
     render() {
       return(
          <div>
+
            <form onSubmit={ this.addIt }>
                <select onChange = { this.handleChange }>
-                   <option value = "Wsauce"> White sauce </option>
-                   <option value = "Rsauce"> Red sauce</option>
-                   <option value = "DRsauce"> Double red sauce </option>
-                   <option value = "MixItUP"> mix it up </option>
+                  {Object.keys(pizzasauce).map((sauce)=> <option value ={ sauce }> { sauce }</option> )}
                </select>
                <input type="submit" value="choose" />
             </form>

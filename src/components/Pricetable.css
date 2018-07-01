@@ -1,0 +1,7 @@
+.pricetable{
+  text-align: right;
+  margin:auto;
+}
+table, th, td{
+    text-align: right;
+}

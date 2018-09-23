@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
+
 import { switchSelection } from '../actions/currentPizzaBase'
 
 const pizzabase = {
@@ -25,9 +25,13 @@ const pizzabase = {
   class PizzaBase extends PureComponent {
   addIt = ( event ) => {
     event.preventDefault()
+    if (!this.state.base){
+      console.log("no base")
+    }
+    else{
     const base = this.state.base
     this.props.switchSelection(base)
-  }
+ } }
 
 
     handleChange = ( event ) => {

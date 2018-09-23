@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import base from './base'
 import sauce from './sauce'
-import ig1 from './ig1'
+import ingredients from './ingredients'
 
 export default combineReducers({
   base,
   sauce,
-  ig1
+  ingredients
 })

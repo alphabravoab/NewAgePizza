@@ -5,3 +5,7 @@
 table, th, td{
     text-align: right;
 }
+
+.price{
+  width:400px;
+}

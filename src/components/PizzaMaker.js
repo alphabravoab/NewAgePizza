@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
 import PizzaBase from './PizzaBase'
 import PizzaSauce from './PizzaSauce'
 import PizzaIngredient from './PizzaIngredient'

@@ -1,40 +1,34 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { switchSelection } from '../actions/currentPizzaIngredient'
+import { switchSelection, deleteIngredient } from '../actions/currentPizzaIngredient'
 
 
 
   class PizzaIngredient extends PureComponent {
-  addIt = ( event ) => {
-    event.preventDefault()
-    const ingredient = this.state.ingredient
-    this.props.switchSelection(ingredient)
-  }
+    state = {}
 
+    handleChange = (event) => {
+        const {name, value} = event.target
+    
+        this.setState({
+          [name]: value
+        })
+      }
+    
+    checkItem(name, e) {
+        if (!e.target.checked)
+          return this.props.deleteIngredient(name);
+    
+        this.props.switchSelection(name);  
+      }
 
-    handleChange = ( event ) => {
-    const ingredient = event.target.value;
-      this.setState({
-           ingredient: ingredient
-      })
-  }
     render() {
       return(
          <div>
-           <form onSubmit={ this.addIt }>
-               <select onChange = { this.handleChange }>
-                 <option value ="">--Pick ingredients -- </option>
-                   <option value = "Pineapple">Pineapple</option>
-                   <option value = "Corn"> Corn </option>
-                   <option value = "Olives(green)"> Olives(green)</option>
-                   <option value = "Red union"> Red union </option>
-                   <option value = "Spinach"> Spinach </option>
-                   <option value = "Cherry tomatoes"> Cherry tomatoes </option>
-                   <option value = "Chicken"> Chicken </option>
-               </select>
-               <input type="submit" value="choose" />
-            </form>
+           	<form onSubmit={this.handleSubmit}>
+           {this.props.ingredients&&Object.keys(this.props.ingredients).map((ingredient)=><div><input name={ingredient} type="checkbox" onChange={e => this.checkItem({ingredient}, e)}/> {ingredient}</div>)}
+           </form>
          </div>
          )
        }
@@ -44,11 +38,13 @@ import { switchSelection } from '../actions/currentPizzaIngredient'
 
 
   const mapStateToProps = state => ({
-      ig1: state.ig1
+      ingredients: state.ingredients
   })
 
-  const mapDispatchToProps = dispatch => ({
-    switchSelection: sauce => dispatch(switchSelection(sauce))
-  })
-
+  function mapDispatchToProps(dispatch) {
+    return bindActionCreators(
+      { switchSelection, deleteIngredient },
+      dispatch
+    );
+  }
   export default connect( mapStateToProps, mapDispatchToProps, ) (PizzaIngredient)

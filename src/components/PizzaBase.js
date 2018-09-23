@@ -44,16 +44,22 @@ const pizzabase = {
          }
       })
   }
+
+  changeButton =(e)=>{
+    console.log(e.target.value)
+    const base = e.target.value
+    const currentPizzabase = pizzabase[base];
+    this.props.switchSelection(currentPizzabase)
+  }
     render() {
       return(
          <div>
-           <form onSubmit={ this.addIt }>
-               <select onChange = { this.handleChange }>
-                 <option value ="">--Pick a base -- </option>
-                 {Object.keys(pizzabase).map((base)=> <option value ={ base }> { base } </option> )}
-               </select>
-               <input type="submit" value="choose" />
-            </form>
+
+<div onChange= { this.changeButton.bind(this) }>   
+             {Object.keys(pizzabase).map((base)=><div> <input name="bodem" type="radio" value ={ base }/> { base } </div> )}
+</div>
+
+ 
          </div>
          )
        }
